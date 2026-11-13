@@ -1,0 +1,247 @@
+{
+  "name": "Thien-Phu Dao",
+  "photo": "assets/me.jpg",
+  "publicHandle": "SpookyFish, Nemo Outis",
+  "role": "Gameplay Developer",
+  "intro": "Building worlds. Chasing that one-more-try feeling.",
+  "bio": "I'm a gameplay developer based in **Ho Chi Minh City, Vietnam**. I have a solid technical foundation and hands-on experience in **system architecture**, **gameplay mechanics design**, and **custom editor tooling**.",
+  "about": "Welcome to this little space where I share pretty much everything about me.",
+  "github": "https://github.com/daothienphu",
+  "linkedin": "https://www.linkedin.com/in/dao-thien-phu/",
+  "x": "https://x.com/ImSpookyFish",
+  "email": "daothienphu.dev@gmail.com",
+  "sampleContent": false,
+  "skills": [
+    "Gameplay",
+    "World Building",
+    "Simulation",
+    "Engine Tools",
+    "Shaders",
+    "VFX",
+    "Audio",
+    "Animation"
+  ],
+  "projects": [
+    {
+      "slug": "spookywater",
+      "title": "SpookyWater",
+      "category": "Water system",
+      "workType": "Tools",
+      "summary": "An upgraded version of the InteractiveWaterSystem.",
+      "description": "SpookyWater is a newer project that builds on the same principles as InteractiveWaterSystem, but better.",
+      "tools": [
+        "Unity"
+      ],
+      "url": "https://github.com/daothienphu/SpookyWater_public",
+      "photos": [
+        "assets/Proj/SpookyWater/SpookyWater.png"
+      ],
+      "videos": [
+        "https://youtu.be/z-I8dplBbRo"
+      ]
+    },
+    {
+      "slug": "interactive-water-system",
+      "title": "InteractiveWaterSystem",
+      "category": "Water system",
+      "workType": "Tools",
+      "summary": "An interactive water system for 2D and 2.5D Unity games.",
+      "description": "A performant interactive water system designed for 2D and 2.5D games in Unity.",
+      "tools": [
+        "Unity"
+      ],
+      "contributions": [
+        "GPU-driven ambient surface waves using Unity Shader Graph.",
+        "GPU-driven, real-time contact ripples using Unity Shader.",
+        "Configurable caustics and distortion using Unity Shader Graph.",
+        "Real-time planar reflections.",
+        "Compatibility with the Unity 2D Light System.",
+        "Depth clipping with both sprites and meshes."
+      ],
+      "url": "https://github.com/daothienphu/InteractiveWaterSystem",
+      "photos": [
+        "assets/Proj/InteractiveWaterSystem/water.gif"
+      ],
+      "videos": [
+        "https://www.youtube.com/watch?v=nht-2tldh_Q"
+      ]
+    },
+    {
+      "slug": "spooky-core",
+      "title": "SpookyCore",
+      "category": "Project foundation",
+      "workType": "Tools",
+      "summary": "A Unity project foundation designed for deterministic execution and scalable architecture.",
+      "description": "A Unity project foundation designed for deterministic execution and scalable architecture.",
+      "tools": [
+        "Unity"
+      ],
+      "contributions": [
+        "Custom MonoBehaviour system for life cycle control and modular game logic.",
+        "Centralized bootstrap loader for system and data initialization.",
+        "MVP-pattern UI system for maintainable interfaces.",
+        "Behavior Tree framework for modular NPC AI behaviors.",
+        "ObjectPool, Singleton, Timer, GizmoControl, custom attributes and extension methods."
+      ],
+      "url": "https://github.com/daothienphu/SpookyCore",
+      "photos": [
+        "assets/Proj/SpookyCore/SpookyCore.png"
+      ]
+    },
+    {
+      "slug": "itch-io-minigames",
+      "title": "Itch.io Minigames",
+      "category": "Minigames",
+      "workType": "Personal work",
+      "summary": "Some minigames I made with my university friends for game jams.",
+      "description": "Several Unity minigames made with friends and published on itch.io.",
+      "tools": [
+        "Unity",
+        "Power of Friendship"
+      ],
+      "url": "https://spookyfish.itch.io/",
+      "links": [
+        {
+          "label": "Baconxpogo on itch.io",
+          "url": "https://baconxpogo.itch.io/"
+        }
+      ],
+      "urlLabel": "SpookyFish on itch.io",
+      "photos": [
+        "assets/Proj/Itch/keepwhatalive.png",
+        "assets/Proj/Itch/ahomefarfromhome.png",
+        "assets/Proj/Itch/2n.png"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "period": "Aug 2025 - Dec 2026",
+      "role": "Unity Game Developer",
+      "company": "NDA",
+      "description": [
+        "Developed a **Nikke-like** playable POC to be submitted to **Steam**. Once accepted, expanded the game to include a **Resident-Evil-like** roguelite gameplay.",
+        "Developed major gameplay systems including architectural systems such as **Event Bus**, custom **Dependency Injection**, **Entity** system, **MVP UI**,...; and other major gameplay systems such as **game flow**, **progression**, **save load**, **localization**, **settings**,...",
+        "Collaborated with a team of 3 developers, 2 GDs, and other internal teams."
+      ],
+      "companyIcon": ""
+    },
+    {
+      "period": "Jul 2023 - Jul 2024",
+      "role": "Junior Unity Engineer",
+      "company": "Kong Studios",
+      "description": [
+        "Developed a mobile multiplayer real-time strategy game prototype (codename **Kong82**, development has been postponed) from the ground up in Unity, leveraging **Photon** and **Mirror** for multiplayer networking.",
+        "Led the implementation of core gameplay systems, including structure management, unit control, and combat logic.",
+        "Collaborated closely with a 5-person development team and\ninternal art team to integrate systems and visuals."
+      ],
+      "companyIcon": "assets/Exp/Kong/iconKong.jpg"
+    },
+    {
+      "period": "Nov 2021 - Dec 2022",
+      "role": "Game Developer Fresher",
+      "company": "Amanotes",
+      "description": [
+        "Developed core gameplay and music control systems for 4 minigames (**Magic Tiles 3**, **Beat Blader**, **Dancing Roads**, **Tiles Hop**, and **Beat Tiles**) using **TypeScript** in **Cocos2D** within the multi-mini-game music app **Game of Songs**",
+        "Built patching and update scripts for modular mini-game deployment using Python.",
+        "Contributed to an internal game SDK by implementing level generation, musical notation detection, and flow control in Objective-C and Swift.",
+        "Collaborated with a team of 4 developers, 3 POs, and cross-functional internal teams."
+      ],
+      "videos": [
+        {
+          "url": "assets/Exp/Amanotes/GameOfSongs.mp4",
+          "title": "Game Of Songs trailer."
+        },
+        {
+          "url": "assets/Exp/Amanotes/MT3.mp4",
+          "title": "Magic Tiles 3 gameplay."
+        },
+        {
+          "url": "assets/Exp/Amanotes/TH2.mp4",
+          "title": "Tiles Hop gameplay."
+        },
+        {
+          "url": "assets/Exp/Amanotes/BB3.mp4",
+          "title": "Beat Blader gameplay."
+        }
+      ],
+      "companyIcon": "assets/Exp/Amanotes/iconAmanotes.avif"
+    },
+    {
+      "period": "Nov 2022 - Dec 2022",
+      "role": "Game Developer Collaborator",
+      "company": "Garena",
+      "description": [
+        "Collaborated with a 10-person dev team and internal departments on the multi-mini-game platform **Block Man Go**.",
+        "Developed a simulation mini-game demo using Lua and a proprietary game engine similar to Roblox.",
+        "Contributed during the probation period before team-wide layoffs."
+      ],
+      "photos": [
+        {
+          "image": "assets/Exp/Garena/blockmango.png",
+          "alt": "BlockMan GO appstore icon."
+        }
+      ],
+      "companyIcon": "assets/Exp/Garena/iconGarena.jpg"
+    },
+    {
+      "period": "Nov 2020 - Jan 2021",
+      "role": "Software Engineer Intern",
+      "company": "Codelynx",
+      "description": "We built a website similar to **StackOverflow** using the **MERN** stack as an internship project. My responsibilities covered core features such as post creation, interactions, and diff-checking.",
+      "companyIcon": "assets/Exp/Codelynx/iconCodelynx.jpg"
+    }
+  ],
+  "socialIcons": {
+    "github": "",
+    "linkedin": "",
+    "x": "",
+    "youtube": ""
+  },
+  "education": [
+    {
+      "qualification": "Bachelor of Science - Computer Science",
+      "institution": "Ho Chi Minh University of Science, Vietnam National University",
+      "period": "2019 - 2023",
+      "description": [
+        "Magna Cum Laude, 3.76 GPA.",
+        "Thesis paper published at MMM 2023: [Practical Analyses of How Common Social Media Platforms and Photo Storage Services Handle Uploaded Images](https://www.researchgate.net/publication/368753355_Practical_Analyses_of_How_Common_Social_Media_Platforms_and_Photo_Storage_Services_Handle_Uploaded_Images).",
+        "Head of the Academic Department, Computer Security Club.",
+        "Member of the IoT Department, Robotics and IoT Club.",
+        "IELTS: 8.0 (2023)."
+      ]
+    }
+  ],
+  "technicalSkills": [
+    {
+      "category": "Engines & tools",
+      "items": [
+        "Unity",
+        "Blender",
+        "Cocos2D",
+        "Photon (Unity networking)",
+        "Mirror (Unity networking)"
+      ]
+    },
+    {
+      "category": "Languages",
+      "items": [
+        "C#",
+        "Python",
+        "TypeScript"
+      ]
+    },
+    {
+      "category": "Specialties",
+      "items": [
+        "Gameplay development",
+        "System architecture",
+        "NPC AI programming",
+        "Editor tooling",
+        "Shaders & VFX",
+        "Audio design"
+      ]
+    }
+  ],
+  "commentsApi": "https://portfolio-comments.daothienphu1429.workers.dev"
+}

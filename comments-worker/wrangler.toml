@@ -1,0 +1,11 @@
+name = "portfolio-comments"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://YOUR-USERNAME.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-comments"
+database_id = "REPLACE_WITH_DATABASE_ID"
