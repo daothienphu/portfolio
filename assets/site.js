@@ -187,6 +187,19 @@ if (commentSection) {
   const endpoint=commentSection.dataset.commentsApi, page=commentSection.dataset.commentsPage;
   const status=commentSection.querySelector('.comments-status'), list=commentSection.querySelector('.comments-list'), form=commentSection.querySelector('form');
   const cards=new Map(); let replyTo=null;
+  const editor=form.elements.body;
+  form.querySelectorAll('[data-format]').forEach(button=>button.addEventListener('click',()=>{
+    const start=editor.selectionStart,end=editor.selectionEnd,selected=editor.value.slice(start,end);let insert='',selectStart=0,selectEnd=0;
+    switch(button.dataset.format){
+      case 'bold': insert='**'+(selected||'bold text')+'**';selectStart=2;selectEnd=insert.length-2;break;
+      case 'italic': insert='*'+(selected||'italic text')+'*';selectStart=1;selectEnd=insert.length-1;break;
+      case 'link': insert='['+(selected||'link text')+'](https://)';selectStart=insert.indexOf('https://');selectEnd=insert.length-1;break;
+      case 'image': insert='!['+(selected||'image description')+'](https://)';selectStart=insert.indexOf('https://');selectEnd=insert.length-1;break;
+      case 'emoji': insert='😊';selectStart=selectEnd=insert.length;break;
+    }
+    editor.setRangeText(insert,start,end,'end');editor.focus();editor.setSelectionRange(start+selectStart,start+selectEnd);
+  }));
+
   const safeURL = value => { try {const u=new URL(value); return u.protocol==='https:' ? u.href : null;}catch{return null} };
   function renderText(text, target){
     const pattern=/(!?\[([^\]\n]{1,200})\]\((https:\/\/[^\s)]+)\)|\*\*([^*\n]+)\*\*|\*([^*\n]+)\*|\x60([^\x60\n]+)\x60)/g;let last=0,match;
