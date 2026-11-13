@@ -34,7 +34,7 @@ export default { async fetch(request, env) {
   const parent=data.parentId||null;if(parent){if(!/^[0-9a-f-]{36}$/i.test(parent)||!await env.DB.prepare('SELECT id FROM comments WHERE id=? AND page=?').bind(parent,page).first())return json({error:'Reply target not found'},400,cors);}
   const hour=Math.floor(Date.now()/3600000);const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(env.RATE_LIMIT_SECRET+':'+hour+':'+ip));const key=Array.from(new Uint8Array(hash),x=>x.toString(16).padStart(2,'0')).join('');
   const rate=await env.DB.prepare('INSERT INTO rate_limits (key,count,expires) VALUES (?,1,?) ON CONFLICT(key) DO UPDATE SET count=count+1 RETURNING count').bind(key,hour+1).first();
-  if(rate.count>5)return json({error:'Too many comments. Please try again later.'},429,cors);
+  if(rate.count>30)return json({error:'Too many comments. Please try again later.'},429,cors);
   await env.DB.prepare('DELETE FROM rate_limits WHERE expires < ?').bind(hour).run();
   const comment={id:crypto.randomUUID(),name,body,parent_id:parent,upvotes:0,downvotes:0,created_at:new Date().toISOString()};
   await env.DB.prepare('INSERT INTO comments (id,page,name,body,created_at,parent_id) VALUES (?,?,?,?,?,?)').bind(comment.id,page,name,body,comment.created_at,parent).run();
