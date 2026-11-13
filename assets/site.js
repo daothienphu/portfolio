@@ -201,10 +201,15 @@ if (commentSection) {
   }));
 
   const safeURL = value => { try {const u=new URL(value); return u.protocol==='https:' ? u.href : null;}catch{return null} };
-  function renderText(text, target){
+  function renderInline(text, target){
     const pattern=/(!?\[([^\]\n]{1,200})\]\((https:\/\/[^\s)]+)\)|\*\*([^*\n]+)\*\*|\*([^*\n]+)\*|\x60([^\x60\n]+)\x60)/g;let last=0,match;
     while((match=pattern.exec(text))){target.append(document.createTextNode(text.slice(last,match.index)));let node;if(match[2]!==undefined){const url=safeURL(match[3]);if(!url){target.append(document.createTextNode(match[0]));last=pattern.lastIndex;continue}if(match[1].startsWith('!')){node=document.createElement('a');node.href=url;node.target='_blank';node.rel='nofollow ugc noopener noreferrer';const image=document.createElement('img');image.src=url;image.alt=match[2];image.loading='lazy';image.referrerPolicy='no-referrer';node.append(image)}else{node=document.createElement('a');node.href=url;node.target='_blank';node.rel='nofollow ugc noopener noreferrer';node.textContent=match[2]}}else{node=document.createElement(match[4]?'strong':match[5]?'em':'code');node.textContent=match[4]||match[5]||match[6]}target.append(node);last=pattern.lastIndex}target.append(document.createTextNode(text.slice(last)));
   }
+  const emojiPicker=form.querySelector('.emoji-picker'), emojiToggle=form.querySelector('.emoji-toggle');
+  const emojiMap=new Map([...form.querySelectorAll('.emoji-choice')].map(button=>[button.dataset.emoji,button.querySelector('img').getAttribute('src')]));
+  emojiToggle.addEventListener('click',()=>{emojiPicker.hidden=!emojiPicker.hidden;emojiToggle.setAttribute('aria-expanded',String(!emojiPicker.hidden))});
+  emojiPicker.addEventListener('click',event=>{const choice=event.target.closest('.emoji-choice');if(!choice)return;const token=':'+choice.dataset.emoji+':';editor.setRangeText(token,editor.selectionStart,editor.selectionEnd,'end');emojiPicker.hidden=true;emojiToggle.setAttribute('aria-expanded','false');editor.focus()});
+  function renderText(text,target){let last=0;for(const match of text.matchAll(/:([a-zA-Z0-9_-]+):/g)){if(!emojiMap.has(match[1]))continue;renderInline(text.slice(last,match.index),target);const image=document.createElement('img');image.className='custom-emoji';image.src=emojiMap.get(match[1]);image.alt=match[1].replace(/^emo_/,'');image.title=image.alt;target.append(image);last=match.index+match[0].length}renderInline(text.slice(last),target)}
   function addComment(comment){
     const article=document.createElement('article'),header=document.createElement('div'),name=document.createElement('strong'),time=document.createElement('time'),body=document.createElement('p'),actions=document.createElement('div'),children=document.createElement('div');
     article.className='reader-comment';header.className='comment-header';actions.className='comment-actions';children.className='comment-replies';name.textContent=comment.name;time.dateTime=comment.created_at;time.textContent=new Date(comment.created_at).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});renderText(comment.body,body);header.append(name,time);
