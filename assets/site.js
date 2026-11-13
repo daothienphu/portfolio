@@ -5,8 +5,8 @@ function applyTheme(theme) {
   if (themeButton) {
     const isLight = theme === 'light';
     themeButton.setAttribute('aria-pressed', String(isLight));
-    themeButton.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
-    themeButton.querySelector('.theme-label').textContent = isLight ? 'Dark mode' : 'Light mode';
+    themeButton.setAttribute('aria-label', isLight ? 'Switch to Dev mode' : 'Switch to Moth mode');
+    themeButton.querySelector('.theme-label').textContent = isLight ? 'Dev mode' : 'Moth mode';
   }
 }
 function savedTheme() {
