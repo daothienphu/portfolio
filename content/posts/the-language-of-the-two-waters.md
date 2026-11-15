@@ -26,6 +26,8 @@ The player doesn't meet a Kashat. There is no friendly native speaker to point a
 
 And that's how my conlang was born: **Ghesen** and **Ghoson** (the Hot's version and the Cold's version of the name).
 
+This post is basically a dump of everything the language currently is, why each piece exists, and how it hooks back into the world. I tried to keep it readable for game designers and world builders, but there's enough phonetics and grammar in here that linguists can poke holes in it too (please do, nicely). I linked references as I went and collected them all at the bottom. And at the very end there's a word list and some practice sentences, if you want to try reading Kashat yourself.
+
 ## First, the world
 
 Before any of the language stuff makes sense, you need to know what the Kashat were dealing with, because honestly the seasons are doing like 80% of the design work here.
@@ -60,17 +62,17 @@ And since there are no lips, the language has no lip sounds at all. No *p*, *b*,
 
 ### Throat consonants
 
-These are written in lowercase. Most of them are sounds English doesn't really use, but other human languages do. That was deliberate: if you want something to sound back-of-the-throat and alien, the easiest way is to steal real sounds that are made really far back in the mouth. Here they are, with rough IPA for the linguists:
+These are written in lowercase. Most of them are sounds English doesn't really use, but other human languages do. That was deliberate: if you want something to sound back-of-the-throat and alien, the easiest way is to steal real sounds that are made really far back in the mouth. Here they are:
 
-- **q**: a *k* made way further back, against the uvula. IPA [q]. Like Arabic ق.
-- **kh**: the sound in Scottish *loch*. Roughly [x].
-- **gh**: a gargled sound, close to a French *r*. Roughly [ʁ].
-- **h**: a harsh, breathy *h* squeezed out of the throat. IPA [ħ], like Arabic ح.
-- **c**: a strangled pharyngeal squeeze. IPA [ʕ], like Arabic ع.
-- **'**: the glottal stop [ʔ], the little catch in the middle of *uh-oh*.
-- **t, d, k, g, s, sh, z, l, n, ng, y**: roughly like English (*sh* is [ʃ], *ng* is [ŋ], *y* is [j]).
+- **q**: a *k* made way further back, against the uvula (the dangly bit at the back of your mouth). Arabic has this one, it's the letter *qaf*.
+- **kh**: the sound at the end of Scottish *loch*.
+- **gh**: a gargled sound, close to a French *r*.
+- **h**: a harsh, breathy *h* squeezed out from deep in the throat. Arabic's "hard h", the letter *haa*.
+- **c**: a strangled squeeze from deep in the throat. Arabic's letter *ayn*.
+- **'**: the glottal stop, the little catch in the middle of *uh-oh*.
+- **t, d, k, g, s, sh, z, l, n, ng, y**: roughly like English.
 
-If you've never heard some of these, the [interactive IPA chart](https://www.ipachart.com/) has recordings for each one, and Wikipedia has decent explainers on [uvular](https://en.wikipedia.org/wiki/Uvular_consonant) and [pharyngeal](https://en.wikipedia.org/wiki/Pharyngeal_consonant) consonants if you want to know where in your throat they happen.
+If you've never heard some of these, the [interactive IPA chart](https://www.ipachart.com/) has a recording for each one (and the exact phonetic symbols, if you're a linguist and want them). Wikipedia also has decent explainers on [uvular](https://en.wikipedia.org/wiki/Uvular_consonant) and [pharyngeal](https://en.wikipedia.org/wiki/Pharyngeal_consonant) consonants if you want to know where in your throat they happen.
 
 ### The not-human sounds
 
@@ -87,9 +89,11 @@ My favorite detail in the whole sound system: the gills are physically separate 
 
 There are 6 vowels, and they come in pairs. Each Hot vowel has one fixed Cold partner:
 
-- **i** (Hot) ↔ **u** (Cold)
-- **e** (Hot) ↔ **o** (Cold)
-- **a** (Hot) ↔ **å** (Cold), said roughly like "aw", IPA [ɔ]
+- **i** (Hot) pairs with **u** (Cold)
+- **e** (Hot) pairs with **o** (Cold)
+- **a** (Hot) pairs with **aw** (Cold), said like the "aw" in *saw*
+
+Quick note on that last one: **aw** is written with two letters, but it's one single vowel. And since the language has no *w* sound at all (no lips, remember), "aw" can never be confused with anything else. Free spelling, courtesy of fish anatomy.
 
 Syllables are (C)V(C), so: maybe a consonant, a vowel, maybe a consonant. The exception is the 4 non-human sounds. Those can go anywhere, and can even be a whole syllable by themselves, like *M* or *KK*.
 
@@ -108,7 +112,7 @@ Some examples:
 - **Q-L-N**: *qilen* (Hot) is the bloom, surface food. *qulon* (Cold) is stored fat, reserves.
 - **T-H-K**: *tehek* (Hot) is vent-fire, an eruption. *tohok* (Cold) is a dead vent, cold stone.
 - **N-GH-L**: *nighel* (Hot) is open water, to swim free. *nughol* (Cold) is the ice-roof, to be trapped under it.
-- **K-SH-T**: *kashat* (Hot) is the traveling shoal, to school. *kåshåt* (Cold) is the winter huddle, to huddle.
+- **K-SH-T**: *kashat* (Hot) is the traveling shoal, to school. *kawshawt* (Cold) is the winter huddle, to huddle.
 - **GH-S-N**: *ghesen* (Hot) is to sing, to call. *ghoson* (Cold) is to recite, to remember.
 
 That last one is where the language's name comes from. In the Hot it's *Ghesen*, "the calling". In the Cold it's *Ghoson*, "the remembering".
@@ -117,7 +121,7 @@ The important thing is that the 2 forms are almost never just "same word, differ
 
 ### For the linguists
 
-Phonetically, the flip is basically "push every vowel back and round it". Hot *i* and *e* are front and unrounded, their Cold partners *u* and *o* are back and rounded, and the low *a* moves back and rounds into *å*. So a Cold word is, feature-wise, its Hot word with all the vowels backed and rounded.
+Phonetically, the flip is basically "push every vowel back and round it". Hot *i* and *e* are front and unrounded, their Cold partners *u* and *o* are back and rounded, and the low *a* moves back and rounds into *aw*. So a Cold word is, feature-wise, its Hot word with all the vowels backed and rounded.
 
 That makes it a cousin of front/back [vowel harmony](https://en.wikipedia.org/wiki/Vowel_harmony) in languages like Finnish and Turkish, mixed with the internal vowel change linguists call [apophony or ablaut](https://en.wikipedia.org/wiki/Apophony) (same thing that gives English *sing / sang / sung*). The difference is that here, one single binary choice, Hot or Cold, controls every vowel in the word at once.
 
@@ -149,7 +153,7 @@ Because the Kashat think vertically, location is marked by 4 case suffixes that 
 
 - **Surfaceward**, *-ish / -ush*: above, up toward. Also used for "more than", "better than", and "hope".
 - **Depthward**, *-ek / -ok*: beneath, down at. Also used for "less than", "origin", and "ancestry".
-- **Level**, *-an / -ån*: alongside, with. Also "together" and "equal to".
+- **Level**, *-an / -awn*: alongside, with. Also "together" and "equal to".
 - **Source**, *-ti / -tu*: from, out of. Also "because of" and "made of".
 
 So *sok-M-ush* is "above us", *nughol-ok* is "beneath the ice", and *qilen-ti* is "from the bloom".
@@ -179,7 +183,7 @@ In dark water, how sure you are depends on which sense you used. So every statem
 - **-X**, felt, through the lateral line and pressure waves. Treated as absolute. Lying with *-X* is a serious crime.
 - **-li / -lu**, seen, by glow. High trust.
 - **-K**, heard. Medium trust.
-- **-sa / -så**, tasted, from a chemical trace in the water. Basically "something passed through here".
+- **-sa / -saw**, tasted, from a chemical trace in the water. Basically "something passed through here".
 - **-ngi / -ngu**, told by someone else. Gossip.
 - **nothing**, the speaker did it themselves, so it's self-evident.
 
@@ -206,7 +210,7 @@ ROOT (-M / -MM / -MMM or a numeral) -case
 Two examples of the verb template doing its thing:
 
 - *R-di'en-ek-ngi tin* = NEG-feast-PAST-HEARSAY they, "They say she didn't eat."
-- *K-kåshåt sok-MM* = IMP-huddle we-SHOAL, "Everyone, huddle!"
+- *K-kawshawt sok-MM* = IMP-huddle we-SHOAL, "Everyone, huddle!"
 
 And a few more rules:
 
@@ -230,14 +234,14 @@ The digits:
 - 0: *XM* (no season, "the felt silence")
 - 1: *tik / tuk*
 - 2: *shen / shon*
-- 3: *gha'a / ghå'å*
+- 3: *gha'a / ghaw'aw*
 - 4: *lisk / lusk*
 - 5: *nehi / nohu*
 
 And the powers of 6, which reuse roots that already mean something:
 
-- 6: *khal / khål*, "a full gill"
-- 36: *kash / kåsh*, "a shoal"
+- 6: *khal / khawl*, "a full gill"
+- 36: *kash / kawsh*, "a shoal"
 - 216: *qilen / qulon*, "a bloom / a full store"
 - 1,296: *nighel / nughol*, "open water / the ice-roof"
 
@@ -282,7 +286,7 @@ Here's how the Kashat version works:
 - **Each word is one upright stalk.** In kelp it's a strand, in coral it's a branch.
 - **Branches are consonants.** Throat sounds branch to the left, mouth sounds branch to the right. How many branches and what shape tells you the exact consonant. On the left, 1 short spur is *'*, 2 is *h*, 3 is *c*, and 1, 2, or 3 long branches are *q*, *kh*, and *gh*. On the right, wavy branches are *s / sh / z* and hooked branches are *l / n / ng*.
 - **Which way the branches point is the season.** In a Hot word, every branch reaches up. In a Cold word, every branch curls down. Season is written once for the whole word, which matches how the vowel harmony works when spoken.
-- **Branch tips are the vowel.** A point is *i / u*, a fork is *e / o*, a bulb is *a / å*. Combine that with the direction and you get the exact vowel.
+- **Branch tips are the vowel.** A point is *i / u*, a fork is *e / o*, a bulb is *a / aw*. Combine that with the direction and you get the exact vowel.
 - **Non-human sounds are grown onto the stalk itself.** M is a ring of polyps around the stalk (stacked for MM and MMM). K is a notch cut in. R is a serrated ridge. X is a sea-fan crown.
 
 Text grows **bottom to top**, past to future, depth to surface, so you read the way coral grows. A sentence is laid out like a coral colony: the verb is the main trunk with its evidential sitting on top as a crown, and the subject and object grow off the sides. Since a felt-evidential X crown is a big sea fan, you can see it from far away, which is why coral laws are crowned with fans.
@@ -317,9 +321,9 @@ And games have already shown this loop works. inkle's [Heaven's Vault](https://w
 
 Even though no Kashat are left, I still wanted to hear the language while designing it, mostly to check that the sounds I described were actually different from each other and not just different on paper. I prototyped this in 2 halves.
 
-For the throat consonants I used [eSpeak NG](https://github.com/espeak-ng/espeak-ng), a free open-source speech synthesizer. Its Arabic voice already has the uvular and pharyngeal sounds I needed, because those are exactly the sounds Arabic writes. So I transliterated words like *qilen*, *ghesen*, and *tehek* into Arabic script and got correct consonants out of an off-the-shelf tool. The vowels came out a bit off, since Arabic only has 3 vowel qualities and can't really do the e/o difference, but the consonant skeleton, which is the part carrying the meaning, came through fine.
+For the throat consonants I used [eSpeak NG](https://github.com/espeak-ng/espeak-ng), a free open-source speech synthesizer. Its Arabic voice already has the deep throat sounds I needed, because those are exactly the sounds Arabic writes. So I transliterated words like *qilen*, *ghesen*, and *tehek* into Arabic script and got correct consonants out of an off-the-shelf tool. The vowels came out a bit off, since Arabic only has 3 vowel qualities and can't really do the e/o difference, but the consonant skeleton, which is the part carrying the meaning, came through fine.
 
-The non-human sounds obviously can't come from a speech synthesizer, because they're not speech. So I generated them straight as audio: a low two-tone thump with a fast fade for M, a short burst of noise for the K click, rhythmically chopped noise for the R rasp, and a buzzy tone with a fast wobble for the X flutter. Then I spliced both halves together into short phrases like *M tehek!* and *Du'on-ush hål KK?* These are rough prototypes for my own reference, not actual game audio.
+The non-human sounds obviously can't come from a speech synthesizer, because they're not speech. So I generated them straight as audio: a low two-tone thump with a fast fade for M, a short burst of noise for the K click, rhythmically chopped noise for the R rasp, and a buzzy tone with a fast wobble for the X flutter. Then I spliced both halves together into short phrases like *M tehek!* and *Du'on-ush hawl KK?* These are rough prototypes for my own reference, not actual game audio.
 
 ## Stuff I haven't figured out yet
 
@@ -334,34 +338,34 @@ If you want to have a go at reading Ghesen/Ghoson, here's a starter vocab. Each 
 
 ### Core roots
 
-- **Q-L-N**: *qilen*, the bloom, surface food · *qulon*, stored fat, reserves
-- **T-H-K**: *tehek*, vent-fire, eruption · *tohok*, dead vent, cold stone
-- **N-GH-L**: *nighel*, open water, to swim free · *nughol*, the ice-roof, to be trapped beneath
-- **K-SH-T**: *kashat*, traveling shoal, to school · *kåshåt*, winter huddle, to huddle
-- **D-'-N**: *di'en*, to feast · *du'on*, to fast, to endure hunger
-- **GH-S-N**: *ghesen*, to sing, to call · *ghoson*, to recite, to remember
-- **N-S-K**: *nisek*, to wake, to erupt · *nusok*, to sleep, to smolder
-- **Y-L-GH**: *yilegh*, to rise · *yulogh*, to hover, to wait in place
-- **Z-N**: *zena*, warmth, desire · *zonå*, loyalty, shared body heat
-- **KH-D**: *khedi*, predator, the hunter · *khodu*, hunger, "the hunter of the Cold"
-- **C-L**: *cil*, glow, living light · *cul*, the dark, the unseen
-- **Z-K-T**: *zeket*, a kelp-knot message · *zokot*, a coral record
-- **S-D-K**: *sidek*, a fresh molt-marking (tattoo, tribal mark, or confession) · *sudok*, a kept molt-piece, an intimate keepsake
+- **Q-L-N**: *qilen*, the bloom, surface food / *qulon*, stored fat, reserves
+- **T-H-K**: *tehek*, vent-fire, eruption / *tohok*, dead vent, cold stone
+- **N-GH-L**: *nighel*, open water, to swim free / *nughol*, the ice-roof, to be trapped beneath
+- **K-SH-T**: *kashat*, traveling shoal, to school / *kawshawt*, winter huddle, to huddle
+- **D-'-N**: *di'en*, to feast / *du'on*, to fast, to endure hunger
+- **GH-S-N**: *ghesen*, to sing, to call / *ghoson*, to recite, to remember
+- **N-S-K**: *nisek*, to wake, to erupt / *nusok*, to sleep, to smolder
+- **Y-L-GH**: *yilegh*, to rise / *yulogh*, to hover, to wait in place
+- **Z-N**: *zena*, warmth, desire / *zonaw*, loyalty, shared body heat
+- **KH-D**: *khedi*, predator, the hunter / *khodu*, hunger, "the hunter of the Cold"
+- **C-L**: *cil*, glow, living light / *cul*, the dark, the unseen
+- **Z-K-T**: *zeket*, a kelp-knot message / *zokot*, a coral record
+- **S-D-K**: *sidek*, a fresh molt-marking (tattoo, tribal mark, or confession) / *sudok*, a kept molt-piece, an intimate keepsake
 
 ### Pronouns
 
 - I: *sek* / *sok*
-- you: *hal* / *hål*
+- you: *hal* / *hawl*
 - they (kin): *tin* / *tun*
-- it (non-kin): *gha* / *ghå*
+- it (non-kin): *gha* / *ghaw*
 
 ### Suffixes
 
 - Surfaceward case and future tense: *-ish* / *-ush*
 - Depthward case and past tense: *-ek* / *-ok*
-- Level case: *-an* / *-ån*
+- Level case: *-an* / *-awn*
 - Source case: *-ti* / *-tu*
-- Evidentials: *-X* (felt), *-li / -lu* (seen), *-K* (heard), *-sa / -så* (tasted), *-ngi / -ngu* (told)
+- Evidentials: *-X* (felt), *-li / -lu* (seen), *-K* (heard), *-sa / -saw* (tasted), *-ngi / -ngu* (told)
 
 ### Drums, clicks and particles
 
@@ -381,8 +385,8 @@ If you want to have a go at reading Ghesen/Ghoson, here's a starter vocab. Each 
 
 ### Numbers
 
-- 1 to 5: *tik, shen, gha'a, lisk, nehi* (Hot) · *tuk, shon, ghå'å, lusk, nohu* (Cold)
-- 6: *khal / khål* · 36: *kash / kåsh* · 216: *qilen / qulon* · 1,296: *nighel / nughol*
+- 1 to 5: *tik, shen, gha'a, lisk, nehi* (Hot) / *tuk, shon, ghaw'aw, lusk, nohu* (Cold)
+- 6: *khal / khawl*; 36: *kash / kawsh*; 216: *qilen / qulon*; 1,296: *nighel / nughol*
 
 ### Practice sentences
 
@@ -396,11 +400,11 @@ Answer: rise-SEEN bloom-MANY, feast-FUTURE we-SHOAL. "The bloom is rising (I see
 
 Answer: ALARM vent-fire, wake-FELT vent-fire. "Fire! The vent is waking. I feel it."
 
-*Nughol-X sok-M-ush. K-kåshåt sok-MM, tohok-ok.*
+*Nughol-X sok-M-ush. K-kawshawt sok-MM, tohok-ok.*
 
 Answer: be-roofed-FELT we-FEW-SURFACEWARD, IMPERATIVE-huddle we-SHOAL, cold-stone-DEPTHWARD. "The ice is closing over us. Huddle, all of us, down at the dead stone."
 
-*Du'on-ok hål noq KK?*
+*Du'on-ok hawl noq KK?*
 
 Answer: endure-PAST you how-many QUESTION. "How many Colds have you endured?", which is how a Kashat asks "How old are you?"
 
@@ -408,7 +412,7 @@ Answer: endure-PAST you how-many QUESTION. "How many Colds have you endured?", w
 
 Answer: bloom-SOURCE reserves. "From the bloom, the store." A proverb, basically "gather while you can".
 
-*Du'on-ush hål KK? Du'on-ush. Qilen-ish.*
+*Du'on-ush hawl KK? Du'on-ush. Qilen-ish.*
 
 Answer: "Will you endure?" "I will endure. Toward the bloom." This is the goodbye the Kashat say to each other at the Turning, as the ice starts forming.
 
@@ -434,7 +438,7 @@ Now I should probably go make the actual game...
 - Alexandra Y. Aikhenvald, [Evidentiality](https://global.oup.com/academic/product/evidentiality-9780199204335), Oxford University Press, 2004
 - [WALS Chapter 77: Semantic Distinctions of Evidentiality](https://wals.info/chapter/77)
 - [WALS Chapter 78: Coding of Evidentiality](https://wals.info/chapter/78)
-- [Verb–subject–object word order](https://en.wikipedia.org/wiki/Verb%E2%80%93subject%E2%80%93object_word_order), Wikipedia
+- [Verb-subject-object word order](https://en.wikipedia.org/wiki/Verb%E2%80%93subject%E2%80%93object_word_order), Wikipedia
 - [Senary (base 6)](https://en.wikipedia.org/wiki/Senary), Wikipedia
 
 ### Writing systems and decipherment

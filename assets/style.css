@@ -228,7 +228,7 @@ nav a.github-link{display:inline-flex;align-items:center;gap:8px}.github-link .s
 
 .experience-gallery{grid-template-columns:repeat(auto-fill,minmax(0,220px))}.experience-gallery figure{width:100%;max-width:220px}@media(max-width:640px){.experience-gallery{grid-template-columns:repeat(auto-fill,minmax(min(100%,160px),1fr))}.experience-gallery figure{max-width:220px}}
 
-.article>p:not(.article-meta),.article li{text-align:justify;hyphens:auto}
+.article>p:not(.article-meta),.article li{text-align:justify;hyphens:none}
 
 /* Keep the name and public handles together on the identity card. */
 .identity{container-type:inline-size}.card-name{display:flex;align-items:baseline;justify-content:space-between;gap:5px;white-space:nowrap}.identity .card-name h3{font-size:clamp(13px,5.5cqw,20px);margin:0}.card-aka{color:var(--muted);font-size:clamp(10px,3.5cqw,12px);line-height:1.3}

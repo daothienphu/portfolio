@@ -18,44 +18,43 @@ So here's what I'm trying: magic as a **fifth fundamental interaction**. Quick d
 
 A field is just something that has a value at every location. Temperature in a room is a good example: one corner can be warmer than another. A weather map is basically a picture of fields like temperature and pressure.
 
-Now imagine there's another field filling all of space. I'm calling it the **thaumic field**, and writing it as:
+Now imagine there's another field filling all of space. I'm calling it the **thaumic field**. Its value can vary from place to place and change over time, a little like the height of a pond's surface when a stone creates ripples. (The field isn't literally water; the ripples are just a way to picture a disturbance spreading.)
 
-$$
-\varphi(x, t)
-$$
-
-Read that as "the value of phi at position $x$ and time $t$". $x$ is a location in 3D space, $t$ is time. The value can change when something disturbs the field, kind of like a pond's surface when you throw a stone in. (The field isn't literally water, ripples are just a nice way to picture how a disturbance spreads.)
-
-To start, I want the smallest model possible: **one number per point**, a scalar field. Later on I'll probably need a vector field to make telekinesis and directional forces work properly, but that's a future-me problem.
+For this first model, the field has **one value at each point**. Physicists call that a scalar field. That's a starting assumption, not a complete explanation for every spell.
 
 ## How would a magical pulse travel?
 
-Before writing any field equation, think about a vibrating string. When one bit of the string gets disturbed, it pulls on its neighbors, and the disturbance travels down the string. Two things matter here: how the string changes *over time*, and how its shape changes *from place to place*.
+Imagine disturbing one end of a stretched string. The disturbance travels along it instead of appearing everywhere at once. A thaumic pulse could work similarly: a mage disturbs the field, and that disturbance spreads through space.
 
-The simple 1D wave equation looks like this:
-
-$$
-\frac{1}{v^2}\frac{\partial^2 \varphi}{\partial t^2} - \frac{\partial^2 \varphi}{\partial x^2} = 0
-$$
-
-It looks scarier than it is, I promise:
-
-- $\partial^2\varphi/\partial t^2$ is how fast the field's rate of change is itself changing over time. Basically acceleration.
-- $\partial^2\varphi/\partial x^2$ is the curvature of the field across space, so whether one spot sits above or below its neighbors.
-- $v$ is how fast the disturbance travels.
-- $= 0$ means it's a disturbance moving freely, with nothing pushing on it from outside.
-
-Real space has 3 dimensions though, so I swap the single space term for a **Laplacian**, $\nabla^2\varphi$, which measures curvature in all 3 directions. Then I add a source, plus one extra parameter that can make the field's static influence short-ranged:
+The simplest useful relationship is:
 
 $$
-\frac{1}{c_\varphi^2}\frac{\partial^2 \varphi}{\partial t^2} - \nabla^2\varphi + \mu^2\varphi = J
+\text{travel time} = \frac{\text{distance}}{\text{wave speed}}
 $$
 
-This is a sourced Klein–Gordon-type equation, used **classically** here. $c_\varphi$ is how fast the field propagates, $\mu$ is an inverse-length parameter, and $J$ says where matter is driving the field. If $\mu = 0$ you get a plain massless wave equation. If $\mu > 0$, the static influence of a localized source usually fades exponentially over a distance of about $1/\mu$.
+For example, if a pulse travelled at the speed of light, it would take about one second to cover 300,000 kilometres in empty space. For a simple massless version of the field, I'm choosing light speed to keep the basic model compatible with relativity. A field with a finite static range can have waves that travel more slowly, depending on their frequency. Interactions with materials could complicate how a pulse travels through them.
 
-To keep things friendly with relativity, I'd set $c_\varphi$ equal to the speed of light, at least until I have a reason not to.
+Here's a more complete version of the field model, using **u** for the field's value and ordinary letters throughout:
 
-And the world building payoff shows up right away: a spell has a **travel time**, and how well it works can depend on **range**. No arbitrary numbers in a rulebook needed.
+$
+\frac{1}{c^2} \frac{d^2u}{dt^2} - \left(\frac{d^2u}{dx^2} + \frac{d^2u}{dy^2} + \frac{d^2u}{dz^2}\right) + a^2u = S
+$
+
+This is a compact way of describing how the field changes. **t** is time; **x**, **y**, and **z** are the three directions in space; **c** is the field's characteristic propagation speed; **a** controls its static range; and **S** describes the source driving the field. Each term such as **d²u/dt²** measures how quickly a rate of change itself changes: here, how the field's rate of change changes over time. The three spatial terms describe how the field curves across space. Each derivative is taken while the other coordinates are held fixed; physicists normally use a special symbol for that, but I'm using **d** to keep the notation familiar.
+
+When **a = 0** and **S = 0**, this is the ordinary wave equation in three dimensions. A nonzero **a** gives a stationary localized source a static influence that falls off exponentially, with a characteristic distance of **1/a**. This is a simplified classical field equation, not a complete theory of magic.
+
+A more detailed wave model can also give the field a limited *static* range: the influence from a stationary, localized source fades rapidly with distance. That's a separate property from how fast a pulse travels. Whether a particular spell weakens with distance also depends on how the wave spreads and what it passes through.
+
+For a repeating wave, its speed, frequency, and wavelength are related:
+
+$
+v = f \times L
+$
+
+Here **v** is speed, **f** is frequency (the number of cycles per second), and **L** is wavelength (the distance between matching points on neighboring cycles). For example, a wave travelling at 300 metres per second with a frequency of 10 cycles per second has a wavelength of 30 metres. This relationship assumes a repeating wave travelling at a steady speed; the speed can depend on frequency in some materials.
+
+That gives me two useful world-building questions right away: **how long does a spell take to arrive, and how much of its effect reaches the target?**
 
 ## The Thaumion: why humans can cast
 
@@ -77,39 +76,35 @@ Here's a real example of vibration patterns you can actually see:
 
 *Photograph: Pieter Kuiper, public domain, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Round_Chladni_plate_with_3_circular_and_4_linear_nodes.jpg). The sand gathers in the spots on the plate that barely move, and the shapes change when the vibration mode changes. This isn't magic, it's exactly the kind of physics I want magic to steal from.*
 
-Now take one responsive structure inside a crystal and treat it like a tiny mass on a spring. It's pushed some distance $q$ away from where it normally rests. Newton's second law says force equals mass times acceleration:
+Now imagine one responsive structure inside a crystal as a tiny mass attached to a spring. A passing thaumic wave pushes it back and forth. If the timing of those pushes is close to the structure's natural rhythm, the motion can grow larger. Different materials could respond to different rhythms and couple to the field with different strengths.
 
-$$
-F = ma = m\ddot{q}
-$$
+Real systems also have **damping**: some organized motion transfers energy to other motions or to the surroundings. That limits the response under a steady driving wave. The exact peak depends on the damping, and resonance alone doesn't tell us what the final effect will be. [OpenStax's explanation of forced oscillations](https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations) has a good introduction to the real physics.
 
-The spring pulls the mass back toward rest with a force of $-kq$. Since $k = m\omega_0^2$, where $\omega_0$ is the natural angular frequency, we get:
+We can describe the forces on that tiny spring-like structure without calculus notation:
 
-$$
-m\ddot{q} + m\omega_0^2 q = 0
-$$
+$
+F = F_{\text{push}} - kx - bv
+$
 
-Nothing magical so far, that's just a normal oscillator. Now let a thaumic wave push on it. Say the local wave goes like $\varphi(t) = \Phi\cos(\omega t)$, and the structure couples to it with strength $g$:
+**F** is the total force, **F push** is the wave's changing push, **x** is how far the structure is displaced from rest, and **v** is its velocity. **k** measures the spring's stiffness; **b** measures damping. The minus signs mean the spring pulls toward rest and damping opposes motion. Combining this with Newton's familiar rule, **F = mass × acceleration**, describes a simple driven, damped oscillator. It is a model for one possible response, not a complete model of a crystal.
 
-$$
-m\ddot{q} + m\omega_0^2 q = g\Phi\cos(\omega t)
-$$
+We can take that spring model further. Let **m** be the mass, **k** the stiffness, **b** the damping, and **x** the displacement. If the wave pushes with a maximum force **F0** and repeats at angular frequency **w**, then:
 
-Real oscillators also lose organized energy, through friction, internal vibrations, whatever. That's **damping**, and I model it with $2m\gamma\dot{q}$, where $\gamma$ controls how fast the motion dies out:
+$
+m \frac{d^2x}{dt^2} + b \frac{dx}{dt} + kx = F_0 \cos(wt)
+$
 
-$$
-m\ddot{q} + 2m\gamma\dot{q} + m\omega_0^2 q = g\Phi\cos(\omega t)
-$$
+The three terms on the left represent inertia, damping, and the spring's restoring force. **dx/dt** is velocity and **d²x/dt²** is acceleration. The right side is a smoothly repeating push; **cos** is the cosine function, which simply makes that push vary in a regular cycle. **w** is measured in radians per second. Its relation to the ordinary frequency **f** in cycles per second is **w = 2 × 3.14159... × f**.
 
-Every term has a job here: inertia, damping, the restoring force, and the magical driving force. Solve for the steady oscillation and you get its amplitude:
+After the initial motion has died away, the amplitude **A** of the repeating motion is:
 
-$$
-A(\omega) = \frac{|g|\Phi}{m\sqrt{(\omega_0^2 - \omega^2)^2 + 4\gamma^2\omega^2}}
-$$
+$
+A = \frac{F_0}{\sqrt{(k - mw^2)^2 + (bw)^2}}
+$
 
-The bit to look at is the bottom. When the driving frequency $\omega$ gets close to the natural frequency $\omega_0$, the first squared term gets small, so the response gets big. Damping is what stops it from going to infinity. (Technically, when damping isn't tiny, the peak in displacement sits slightly below $\omega_0$, for the pedants.)
+For a fixed push strength and frequency, this tells us how far the oscillator moves from its resting position. Its undamped natural angular frequency **w0** is given by **w0² = k/m**. When the driving frequency approaches that natural frequency, the response can become large. Damping limits it; with appreciable damping, the largest displacement occurs somewhat below the natural frequency. This formula assumes a linear spring, damping proportional to velocity, and a steady sinusoidal push.
 
-This is how I want **magical materials** to work. A crystal doesn't need some special "ice magic" category inside it. Its structure might just respond strongly at frequencies that happen to be good for pulling energy out of certain modes of matter. Different materials, different resonances, different coupling strengths.
+This is how I want **magical materials** to work. A crystal doesn't need an "ice magic" category inside it. Its structure could simply respond to particular field patterns, transferring energy in ways that depend on its material and environment. The details of that coupling still need to be invented.
 
 And that gives a reason ancient incantations and ritual instruments could've actually worked: they helped a caster repeat a specific timing, or keep a field pattern stable. Modern engineers would just replace them with better resonators and controllers. Less chanting, more knobs.
 
@@ -117,87 +112,91 @@ And that gives a reason ancient incantations and ritual instruments could've act
 
 Resonance on its own doesn't make heat, cold, motion, or life. It only tells us **which systems react**. We still have to keep track of energy.
 
-A moving thing has kinetic energy, and our spring-like structure also stores potential energy. Put them together:
+The tiny spring-like structure can store energy in its motion and in its stretched spring. As the wave pushes it, energy can move into or out of that motion. Damping then transfers some of the organized motion into other forms, often heat.
+
+For the spring model, that stored energy **E** is:
+
+$
+E = \frac{1}{2}mv^2 + \frac{1}{2}kx^2
+$
+
+The first term is energy of motion; the second is energy stored in the spring. Here **v = dx/dt**. At any instant, the field supplies power **F push × v**, while damping transfers power **bv²** out of the organized motion. So the energy balance is:
+
+$
+\frac{dE}{dt} = F_{\text{push}}v - bv^2
+$
+
+The left side is the rate at which the oscillator's stored energy changes. The first term on the right can be positive or negative, because the field can give energy to the oscillator or take it back. The damping term is nonnegative for positive **b**, so it always removes energy from this organized motion.
+
+Once the motion has settled into a repeating cycle, its stored energy is the same at the start and end of each cycle. Averaged over that cycle:
 
 $$
-E_{\text{osc}} = \tfrac{1}{2}m\dot{q}^2 + \tfrac{1}{2}m\omega_0^2 q^2
+\text{power from the field} = \text{power transferred elsewhere}
 $$
 
-The first term is energy of motion, the second is energy stored in being displaced. Multiply the damped oscillator equation by its velocity $\dot{q}$, and the energy balance comes out as:
+**Power** just means energy transferred per second. For a steady transfer:
 
-$$
-\frac{dE_{\text{osc}}}{dt} = g\varphi\dot{q} - 2m\gamma\dot{q}^2
-$$
+$
+P = E / t
+$
 
-Reading left to right:
+Here **P** is power in watts, **E** is energy in joules, and **t** is time in seconds. For example, transferring 100 joules over 10 seconds averages 10 watts.
 
-- $dE_{\text{osc}}/dt$ is how fast the oscillator's energy is changing.
-- $g\varphi\dot{q}$ is the power the thaumic field is delivering right now, force times velocity.
-- $2m\gamma\dot{q}^2$ is power leaking out of the organized oscillation into other places, usually ending up as heat.
+For the steady oscillation above, its average absorbed power is:
 
-Once the motion settles into a repeating cycle, its average stored energy stops changing, so the average power going in equals the average power being lost. With $q(t) = A\cos(\omega t - \delta)$, and the average of $\sin^2$ over a cycle being $1/2$, we get:
+$
+P = \frac{bw^2A^2}{2}
+$
 
-$$
-\langle P_{\text{abs}} \rangle = m\gamma\omega^2 A^2 = \frac{g^2\Phi^2\gamma\omega^2}{m\left[(\omega_0^2 - \omega^2)^2 + 4\gamma^2\omega^2\right]}
-$$
+Here **P** is average power, **b** is the damping, **w** is the driving angular frequency, and **A** is the steady displacement amplitude. This follows because the average of the squared velocity over a cycle is **w²A²/2**. It applies to the simple oscillator model under the same assumptions as the amplitude equation.
 
-So this tells me why one substance heats up a lot under one thaumic frequency but barely reacts to another. It also says a bigger field amplitude costs more energy: in this linear model, absorbed power goes up with $\Phi^2$. If you want the real oscillator math behind this, the [MIT spectroscopy notes](https://chem.libretexts.org/Ancillary_Materials/Laboratory_Experiments/Wet_Lab_Experiments/MIT_Labs/Lab_10%3A_Fundamentals_Of_Spectroscopy/1.2_-_Background) cover it.
 
-**Pyromancy** could dump energy into tiny modes that turn into heat. **Cryomancy** is harder: it has to pull energy out and carry it somewhere else, maybe with some actively driven process that works kind of like a fridge. So fire and ice are not automatically mirror-image spells, which I think is a cool consequence.
+
+In the equation above, the equality describes averages over a full cycle, not necessarily what happens at every instant. In a simple linear model, doubling the wave's amplitude makes the average absorbed power four times as large, provided the frequency and other conditions stay the same. Real materials may stop behaving linearly at higher strengths.
+
+**Pyromancy** could put energy into matter, where it eventually becomes heat. **Cryomancy** is harder: it has to remove energy and send it somewhere else. If the destination is warmer than the thing being cooled, the process also needs an energy input, like a fridge does. See [OpenStax on refrigerators and heat pumps](https://openstax.org/books/university-physics-volume-2/pages/4-3-refrigerators-and-heat-pumps). Fire and ice aren't automatically mirror-image spells, which I think is a cool consequence.
 
 ## Where does the energy come from?
 
-Say a mage heats 1 kilogram of water from 20°C to 100°C. Regular thermodynamics says:
+Say a mage heats 1 kilogram of water from 20°C to 100°C. The energy needed is approximately:
 
 $$
-Q = mc\Delta T \approx (1\ \text{kg})(4{,}180\ \text{J/kg·°C})(80\ \text{°C}) \approx 334{,}400\ \text{J}
+\text{energy} = \text{mass} \times \text{specific heat} \times \text{temperature rise}
 $$
 
-That's about **334 kilojoules**, before counting any losses or evaporation. The mage can't just wish that energy into existence.
-
-A consistent field model needs an energy budget for the field *and* the matter. One way to get there is to start with a Lagrangian, which is a math expression that packs a system's kinetic, potential, and interaction terms together. In a simple idealized model, with units picked so the field terms match our wave equation:
+Specific heat tells us how much energy it takes to warm a given amount of a substance by one degree. For water, that's about 4,180 joules per kilogram per degree Celsius. So the calculation is:
 
 $$
-\mathcal{L}_{\text{field}} = \tfrac{1}{2}\left[\left(\frac{\dot{\varphi}}{c_\varphi}\right)^2 - |\nabla\varphi|^2 - \mu^2\varphi^2\right]
+1 \times 4{,}180 \times 80 = 334{,}400 \text{ joules}
 $$
 
-$$
-L_{\text{osc}} = \tfrac{1}{2}m\dot{q}^2 - \tfrac{1}{2}m\omega_0^2 q^2
-$$
+That's about **334 kilojoules**, assuming the water stays liquid and ignoring energy lost to its surroundings or used to evaporate it. The mage can't just wish that energy into existence. See [OpenStax on specific heat](https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry).
+
+For a fridge-like cooling spell, the energy budget can be written as:
+
+$
+E_{\text{released}} = E_{\text{removed}} + E_{\text{supplied}}
+$
+
+The energy released at the warmer destination includes both the energy taken from the cooled object and the work supplied to the cooling process. This is an idealized energy balance; real devices can also transfer energy to other surroundings.
+
+The broader bookkeeping rule for a spell is:
 
 $$
-L_{\text{int}} = g\,q\,\varphi \quad \text{(at the oscillator's location)}
+\text{energy before} = \text{energy after}
 $$
 
-Run these through the Euler–Lagrange equations and you get back the undamped oscillator equation and the field equation, with a localized source $J = g\,q\,\delta^3(x - x_0)$. The $\delta^3$ just means this idealized oscillator lives at a single point, $x_0$.
+Count everything involved: the source, the field, the target, their interaction, and the surroundings. Energy that seems to disappear through damping has gone somewhere else. A full mathematical model would have to account for all of those transfers consistently; this article hasn't built one yet.
 
-The same model gives a total energy that includes field energy, oscillator energy, **and interaction energy**:
-
-$$
-E_{\text{total}} = E_{\text{field}} + E_{\text{osc}} - g\,q\,\varphi(x_0)
-$$
-
-$$
-\frac{dE_{\text{total}}}{dt} = 0 \quad \text{(closed, ideal system)}
-$$
-
-That last line is conservation of energy. If I add damping back in, I also have to include whatever thermal (or other) system is receiving the lost energy. Otherwise I'm just hiding energy loss inside a symbol and calling it a day.
-
-Momentum has to be conserved too. To lift a rock, a mage needs some mechanism that makes a directed force, and the field or something else has to take the opposite momentum. My basic scalar oscillator model doesn't give solid telekinesis yet, so that's still unfinished physics.
+Momentum has to be conserved too. To lift a rock, a mage needs some mechanism that makes a directed force, and the field or something else has to take the opposite momentum. A scalar field can in principle exert directional forces where its strength varies across space, but I haven't worked out a mechanism for precise, controlled telekinesis yet.
 
 So the Thaumion shouldn't be an infinite battery. It might *control* a transfer, while most of the actual energy comes from fuel, a charged device, or some outside reservoir. That splits a talented **controller** from a powerful **energy source**, which is a really useful distinction for both stories and game mechanics.
 
 ## Is this quantum field theory?
 
-Not yet, no. Everything so far is a **classical field model**. Quantum field theory would turn $\varphi$ into a quantum field operator and describe its excitations as particles. I could call that hypothetical particle a **thaumon**. For a relativistic free scalar field, its energy would follow:
+Not yet, no. The picture so far is a **classical field model**: it treats the field as something that can vary continuously across space and time. In quantum field theory, a field can have particle-like excitations. I could call a hypothetical excitation of this one a **thaumon**.
 
-$$
-E^2 = p^2c^2 + m_\varphi^2 c^4
-$$
-
-$p$ is momentum and $m_\varphi$ is the thaumon's mass. If the field plays by normal relativity, then $\mu = m_\varphi c/\hbar$, where $\hbar$ is the reduced Planck constant. Quantum transitions would then involve energy differences like $\Delta E = \hbar\omega$.
-
-But none of that magically (heh) explains healing, levitation, or a biological transmitter. Quantizing a field doesn't give it whatever powers you want. I'd still need to say *which particles it couples to*, *how those couplings work*, and *what organized structures can do with them*. That's the difference between writing physics-looking symbols and actually building a theory.
+That name doesn't explain healing, levitation, or a biological transmitter. Quantizing a field doesn't automatically give it whatever powers I want. I'd still need to specify what it interacts with, how those interactions work, and what the theory predicts. That's the difference between using physics as inspiration and having a complete theory.
 
 ## So where do the schools of magic come from?
 
