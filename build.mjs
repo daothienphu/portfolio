@@ -26,7 +26,7 @@ const socialPaths = {
 const socialIcon = (key, prefix) => assetPath(data.socialIcons?.[key], prefix)
   ? icon(data.socialIcons[key], '', prefix)
   : `<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="${socialPaths[key]}"></path></svg>`;
-const socialLinks = (prefix='') => [['GitHub', 'github'], ['LinkedIn', 'linkedin'], ['X (formerly Twitter)', 'x']]
+const socialLinks = (prefix='') => [['GitHub', 'github'], ['LinkedIn', 'linkedin'], ['YouTube', 'youtube'], ['X (formerly Twitter)', 'x']]
   .map(([label, key]) => /^https?:\/\//i.test(data[key] || '')
     ? `<a href="${safeUrl(data[key])}">${socialIcon(key, prefix)}<span>${label}</span></a>`
     : `<span class="social-pending">${socialIcon(key, prefix)}<span>${label} <small>(URL needed)</small></span></span>`).join('');
@@ -61,7 +61,7 @@ const posts = fs.readdirSync(path.join(root,'content/posts')).filter(f=>f.endsWi
   return {...meta,tags,body:match[2],slug:file.replace(/\.md$/,'')};
 }).sort((a,b)=>b.date.localeCompare(a.date));
 const date = s => new Date(s+'T00:00:00Z').toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'});
-function inline(s){const math=[]; s=String(s).replace(/(`[^`]+`)|\$([^$\n]+)\$/g,(match,code)=>{if(code)return code; math.push(match);return `MATHPLACEHOLDER${math.length-1}END`;}); return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2">$1</a>').replace(/MATHPLACEHOLDER(\d+)END/g,(_,i)=>esc(math[Number(i)]))}
+function inline(s){const math=[]; s=String(s).replace(/(`[^`]+`)|\$([^$\n]+)\$/g,(match,code)=>{if(code)return code; math.push(match);return `MATHPLACEHOLDER${math.length-1}END`;}); return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2">$1</a>').replace(/\[([^\]]+)\]\(([a-z0-9-]+\.html)\)/g,'<a href="$2">$1</a>').replace(/MATHPLACEHOLDER(\d+)END/g,(_,i)=>esc(math[Number(i)]))}
 function postImageUrl(value) {
   if (assetPath(value, '../')) return assetPath(value, '../');
   try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? esc(url.href) : ''; } catch { return ''; }
@@ -116,8 +116,8 @@ function gifStill(src) {
 }
 function media(p,prefix='',detail=false){
   const photos=projectPhotos(p);
-  const videos=(Array.isArray(p.videos)?p.videos:[]).map(v=>typeof v==='string'?{url:v}:v).filter(v=>v && youtubeId(v.url));
-  if(detail && (photos.length || videos.length)) return `<div class="project-gallery" aria-label="Project photos and videos">${photos.map(photo=>`<a href="${assetPath(photo.image,prefix)}" target="_blank" rel="noopener"><img src="${assetPath(photo.image,prefix)}" alt="${esc(photo.alt||p.title)}" loading="lazy"></a>`).join('')}${videos.map(video=>`<div class="project-gallery-video"><iframe src="https://www.youtube-nocookie.com/embed/${youtubeId(video.url)}" title="${esc(video.title||p.title+' video')}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`).join('')}</div>`;
+  const videos=(Array.isArray(p.videos)?p.videos:[]).map(v=>typeof v==='string'?{url:v}:v).filter(v=>v && (youtubeId(v.url) || (assetPath(v.url) && /\.(mp4|webm)$/i.test(v.url))));
+  if(detail && (photos.length || videos.length)) return `<div class="project-gallery" aria-label="Project photos and videos">${photos.map(photo=>`<a href="${assetPath(photo.image,prefix)}" target="_blank" rel="noopener"><img src="${assetPath(photo.image,prefix)}" alt="${esc(photo.alt||p.title)}" loading="lazy"></a>`).join('')}${videos.map(video=>!youtubeId(video.url)?`<div class="project-gallery-video"><video controls preload="metadata" playsinline aria-label="${esc(video.title||p.title+' video')}"><source src="${assetPath(video.url,prefix)}"></video></div>`:`<div class="project-gallery-video"><iframe src="https://www.youtube-nocookie.com/embed/${youtubeId(video.url)}" title="${esc(video.title||p.title+' video')}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`).join('')}</div>`;
   if(!photos.length) return `<div class="project-media media-placeholder" role="img" aria-label="Project image placeholder"><span>No image</span></div>`;
   const selected=photos.slice(0,3);
   return `<div class="project-media project-collage collage-${selected.length}">${selected.map(photo=>{const gif=/\.gif$/i.test(photo.image);const still=gif?gifStill(photo.image):photo.image;return `<div class="collage-panel"><img src="${assetPath(still,prefix)}"${gif?` data-gif="${assetPath(photo.image,prefix)}" data-still="${assetPath(still,prefix)}"`:''} alt="${esc(photo.alt||p.title)}" loading="lazy"></div>`;}).join('')}</div>`;
@@ -181,8 +181,8 @@ for(const p of posts){const body=`<article class="article wrap"><a class="back" 
 
 for(const p of data.projects){
  if(!/^[a-z0-9-]+$/.test(p.slug))throw Error('Invalid project slug: '+p.slug);
- const contributions=(p.contributions||[]).map(item=>`<li>${esc(item)}</li>`).join('');
- const body=`<article class="wrap project-detail"><a class="back" href="../index.html#work">${arrow('left')} Back to projects</a><div class="page-title"><div class="eyebrow">${esc(p.workType||'Uncategorized')} · ${esc(p.category)}${data.sampleContent?' · EXAMPLE PROJECT':''}</div><h1>${esc(p.title)}</h1><p>${esc(p.summary)}</p></div>${media(p,'../',true)}<div class="detail-layout"><div class="detail-content"><h2>About the project</h2><p>${esc(p.description)}</p>${contributions?`<h2>Features</h2><ul>${contributions}</ul>`:''}${p.challenge?`<h2>Technical challenges</h2><p>${esc(p.challenge)}</p>`:''}${p.learning?`<h2>What I learned</h2><p>${esc(p.learning)}</p>`:''}<div class="project-actions">${p.url?`<a class="button" href="${safeUrl(p.url)}">${esc(p.urlLabel || 'Visit project')} ${arrow('up-right')}</a>`:''}${(p.links||[]).filter(link=>/^https?:\/\//i.test(link.url||'')).map(link=>`<a class="button" href="${safeUrl(link.url)}">${esc(link.label)} ${arrow('up-right')}</a>`).join('')}</div></div><aside><h3>Project details</h3>${facts(p,'../')}</aside></div></article>`;
+ const contributions=(p.contributions||[]).map(item=>`<li>${inline(item)}</li>`).join('');
+ const body=`<article class="wrap project-detail"><a class="back" href="../index.html#work">${arrow('left')} Back to projects</a><div class="page-title"><div class="eyebrow">${esc(p.workType||'Uncategorized')} · ${esc(p.category)}${data.sampleContent?' · EXAMPLE PROJECT':''}</div><h1>${esc(p.title)}</h1><p>${esc(p.summary)}</p></div>${media(p,'../',true)}<div class="detail-layout"><div class="detail-content"><h2>About the project</h2>${(Array.isArray(p.description)?p.description:[p.description]).filter(Boolean).map(t=>`<p>${inline(t)}</p>`).join('')}${contributions?`<h2>Features</h2><ul>${contributions}</ul>`:''}${p.challenge?`<h2>Technical challenges</h2><p>${esc(p.challenge)}</p>`:''}${p.learning?`<h2>What I learned</h2><p>${esc(p.learning)}</p>`:''}<div class="project-actions">${p.url?`<a class="button" href="${safeUrl(p.url)}">${esc(p.urlLabel || 'Visit project')} ${arrow('up-right')}</a>`:''}${(p.links||[]).filter(link=>/^https?:\/\//i.test(link.url||'')).map(link=>`<a class="button" href="${safeUrl(link.url)}">${esc(link.label)} ${arrow('up-right')}</a>`).join('')}</div></div><aside><h3>Project details</h3>${facts(p,'../')}</aside></div></article>`;
  write(`projects/${p.slug}.html`,layout(p.title,'Projects','../',body));
 }
 console.log(`Built ${data.projects.length} projects and ${posts.length} posts in dist/`);

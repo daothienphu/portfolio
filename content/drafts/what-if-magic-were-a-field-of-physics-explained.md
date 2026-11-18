@@ -1,6 +1,6 @@
 ---
 title: What If Magic Were a Field of Physics?
-date: 2026-05-27
+date: 2026-11-14
 category: World Building
 tags: World Building, Magic Systems, Physics, Game Design, Speculative Fiction
 excerpt: I'm bored of magic that just works. So here's me trying to build spellcasting out of a fifth physical field, starting with waves, resonance, energy transfer, and conservation.
@@ -14,7 +14,7 @@ We would've measured it, found materials that react to it, built machines around
 
 So here's what I'm trying: magic as a **fifth fundamental interaction**. Quick disclaimer before anyone gets excited: the equations below are deliberately simplified models borrowed from real physics, plus one made-up field. They're not proof that this force exists, and they're definitely not a finished quantum field theory. The point is just to give this world rules that hold up for more than one spell.
 
-## Start with a field, not a spell
+## A whole field of magic
 
 A field is just something that has a value at every location. Temperature in a room is a good example: one corner can be warmer than another. A weather map is basically a picture of fields like temperature and pressure.
 

@@ -50,6 +50,58 @@ That means the arrangement can reflect the composition of the player's fleet. A 
 
 The system checks the built defenses periodically and uses their entity types to decide which satellite layers are wanted. The audio doesn't need to know every gameplay detail. It needs a small set of meaningful inputs that can be mapped to musical decisions.
 
+## What is actually inside each layer?
+
+The most concrete way to explain the arrangement is to look at the original **synth version**. Its layer plan is built around D minor, a 120 BPM tempo, and 4/4 time. Rock, jazz, and chiptune have their own songs and arrangements, so the instrumentation below describes the synth version rather than every genre.
+
+The **Base** has a wide supersaw pad, a low sine-wave sub following the chord roots, and section accents such as a chorus crash and a pre-chorus snare roll. A supersaw combines detuned sawtooth waves to make a wide, dense sound; a pad holds notes to give the music a sustained background. The base carries the harmony because a player might have few optional layers active. It needs to give the arrangement somewhere to stand on its own.
+
+The **Theme** carries the recognizable lead: a chorus hook, reinforced an octave lower, and a slower bridge line. In the synth arrangement it is silent in the intro, verse, and pre-chorus. It fades away during a boss fight so the boss's own lead has room. That separation also gives the game a clear change in musical identity when a boss arrives.
+
+The **satellite layers** each have a different job and character:
+
+- **Standard:** kick drum and an eighth-note plucked bass pattern. This supplies a rhythmic engine without depending on another satellite for the pulse.
+- **Tesla:** electric claps on beats two and four, plus distorted chords cut into a repeating sixteenth-note gate. The claps create a backbeat while the rapidly pulsing chords suggest an electrical texture.
+- **Laser:** sixteenth-note hi-hats and a gliding theremin-like line. The hats provide motion; the sustained, sliding lead suggests a continuous beam.
+- **Missiles:** a tom groove and a bright arpeggio, a chord played as a sequence of notes. In one pattern, accents group subdivisions into a 3-3-2 feel, giving the part a recognizable rhythm above the lower bass.
+- **Railgun:** a syncopated slap-bass riff built around roots, octaves, and fifths, with offbeat finger snaps. Syncopation shifts accents away from the most expected beats, giving the weapon a punchy rhythmic identity.
+- **Flak:** shaker and open hi-hat patterns, adding high-frequency percussion without requiring another melody.
+- **Heavy Cannon:** a half-time drum feel with kick, large snare, and sub boom. Half-time makes the beat feel broader and heavier while the underlying tempo stays the same.
+- **Gravity Well:** a pulsing wobble bass. Its part was moved an octave above the deepest sub so it has a better chance of being heard alongside the base.
+- **Reinforcer:** short, repeated string notes called a *spiccato ostinato*, paired with a low taiko drum. The repeated figure gives it a persistent, defensive character.
+- **Minelayer:** a repeating, syncopated marimba pattern: a row of short mallet notes that echoes the idea of laying mines.
+- **EMP:** bit-crushed glitch percussion and high electronic blips. Bit-crushing deliberately reduces digital resolution to create a rough, broken texture.
+- **Miner:** metallic knocks in a 3-3-2 rhythm and a low thud, suggesting machinery and drilling.
+- **Nova:** a choir-like pad, bright synth stabs, and occasional crashes for a larger, more explosive color.
+
+These are arrangements, not one-instrument-per-layer rules. A layer can bundle percussion and a pitched part because the game turns the whole stem on or off as one unit. Section treatment changes the patterns too: an intro can be sparser than a chorus, so the list describes the layer's role across the song rather than promising that every sound plays in every bar.
+
+The **boss layers** also combine a lead with percussion. For example, Bastion has a brass-like fanfare and march-style snare; Hive has buzzing fast figures and shaker-driven percussion; Juggernaut uses distorted power-chord rhythms and heavy drums. They are written over the shared synth-song harmony so a boss part can sit above different fleets. Only one boss layer is selected at a time, and the regular Theme steps aside.
+
+Finally, **Tension** is a drone with close, dissonant notes and a high cluster. Its level follows gravity. Unlike a satellite's rhythm or a boss's melody, its job is to add pressure to the existing arrangement as a continuous game value changes.
+
+## How the synth layers are made
+
+The project includes a Python music generator rather than only a folder of finished tracks. It defines the chord progressions and note patterns, assigns those patterns to instruments and stems, renders the parts to audio, and writes separate section clips. It can also produce MIDI and previews. The project supports importing suitably named stems exported from a digital audio workstation as an alternative.
+
+The synth song starts with a shared harmonic map. For example, its intro moves through D minor, B-flat major, G minor, and A7 colors; the chorus uses a different progression and carries the hook. The section endings are designed around A7, giving the next section a common harmonic handoff. Extended and suspended chords add color to the underlying harmony. The optional parts use the chord plan so that, when the game combines them, they are not each following an unrelated progression.
+
+The generator then gives each part a role and changes its treatment by section. An intro might thin out a pattern; the pre-chorus builds toward the chorus; the chorus is fuller; and the bridge uses a half-time feel. Some parts have their own exceptions. The result is not simply the same short loop with instruments muted: the individual stems have section-specific material.
+
+There are also **A and B variants**. In the synth version, several B sections use different chord progressions and rhythmic patterns. The chorus retains its chords and the beginning of its hook, with a different answer later in the phrase. When a section returns, the system alternates its variants across the active layers together, so the different parts follow the same version of the harmony.
+
+For rendering, note events are turned into synthesized instrument and percussion audio, combined into each stem, and processed with effects such as reverb and delay. The generator normalizes part levels, applies stem effects, and keeps a four-second tail after each section so the outgoing sound can continue under the next one. It writes section and variant clips along with loudness information. Unity's content setup picks up the named clips and assigns them to the music configuration and Addressables.
+
+The other genres have their own song definitions, including their own tempo, harmony, melody, and parts, while keeping the same broad layer roles. That distinction came from an iteration: simply giving the synth arrangement different instrument sounds didn't make the jazz and chiptune versions feel like their own music.
+
+## What changed after listening
+
+The layer plan evolved through feedback. Earlier versions had too many melodic parts and not enough rhythm, so a fleet with Standard, Tesla, and Laser could lack the percussion the arrangement needed. The plan was revised to distribute rhythmic and bass material across the satellites: kick in Standard, claps in Tesla, hats in Laser, and toms in Missiles.
+
+Some parts were technically present but hard to notice because they occupied the same low register as the base or Standard bass. Gravity Well's wobble moved up an octave; Missiles gained a brighter, higher arpeggio; and Reinforcer became a string ostinato with taiko. Railgun and Minelayer were also rewritten after earlier sounds didn't work for the listener. The useful lesson was to check **masking**: if two parts compete in the same frequency range and rhythm, making one merely exist in the mix does not mean it can be heard clearly.
+
+Another round of feedback identified repetition when the fleet stayed unchanged. The response was to add the song sections, a recognizable Theme, and later the A/B variants. That is why the horizontal structure matters even when none of the player's satellites change.
+
 ## Joining on the bar
 
 Knowing a layer is wanted is only the first step. For ordinary layers, the system waits for a bar boundary and fades the layer in or out. If a new layer joins in the middle of a section, it starts its clip at the sample corresponding to the current bar, so it lines up with the other parts instead of starting the section from the beginning.

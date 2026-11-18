@@ -1,5 +1,5 @@
 ---
-title: The Language of the Two Waters: Building a Conlang for a Species Nobody Gets to Meet
+title: Making a Conlang that changes with time
 date: 2025-05-23
 category: World Building
 tags: Conlang, Worldbuilding, Linguistics, Phonetics, Narrative Design, Game Design
@@ -191,7 +191,7 @@ The top rank is based on real fish again. The [lateral line](https://en.wikipedi
 
 Also, the felt marker is the gill-flutter X itself, and it's the one marker you can't whisper. So you can't quietly fake it. Commands, questions, and future stuff about other people usually skip the evidential entirely. A future event marked with *-X* is a prophecy, and only elders are allowed to say those.
 
-## Grammar, quickly
+## Grammar
 
 Word order is **Verb, Subject, Object**. The action goes first, because in an emergency what matters is *flee* or *eat*, not who's doing it. VSO is uncommon but real in human languages too, Welsh, Irish, and Classical Arabic all do it.
 
@@ -316,21 +316,6 @@ The goal is that the player figures out the rules from evidence instead of readi
 Ghesen/Ghoson is built so the same kind of noticing is possible. A Hot and a Cold inscription of the same root only differ in their vowels when spoken, and only in branch direction when written. Case suffixes repeat across tons of nouns. Drum plurals show up as stacked rings. All patterns a careful player can spot before they know a single word.
 
 And games have already shown this loop works. inkle's [Heaven's Vault](https://www.gamedeveloper.com/design/how-inkle-developed-its-own-ancient-language-for-i-heaven-s-vault-i-) built a whole story around translating an invented ancient script, where wrong guesses become part of the story and get corrected later. Rundisc's [Chants of Sennaar](https://en.wikipedia.org/wiki/Chants_of_Sennaar) has you decode multiple invented languages by watching people and filling in a notebook of guesses. The difference with mine is the setting: there's nobody to talk to, so every clue is archaeological.
-
-## Hearing it anyway
-
-Even though no Kashat are left, I still wanted to hear the language while designing it, mostly to check that the sounds I described were actually different from each other and not just different on paper. I prototyped this in 2 halves.
-
-For the throat consonants I used [eSpeak NG](https://github.com/espeak-ng/espeak-ng), a free open-source speech synthesizer. Its Arabic voice already has the deep throat sounds I needed, because those are exactly the sounds Arabic writes. So I transliterated words like *qilen*, *ghesen*, and *tehek* into Arabic script and got correct consonants out of an off-the-shelf tool. The vowels came out a bit off, since Arabic only has 3 vowel qualities and can't really do the e/o difference, but the consonant skeleton, which is the part carrying the meaning, came through fine.
-
-The non-human sounds obviously can't come from a speech synthesizer, because they're not speech. So I generated them straight as audio: a low two-tone thump with a fast fade for M, a short burst of noise for the K click, rhythmically chopped noise for the R rasp, and a buzzy tone with a fast wobble for the X flutter. Then I spliced both halves together into short phrases like *M tehek!* and *Du'on-ush hawl KK?* These are rough prototypes for my own reference, not actual game audio.
-
-## Stuff I haven't figured out yet
-
-- **Sound in a world with no speakers.** Drum-counting and the Turning Song are both part of the language, but neither can survive the collapse as actual sound. If the game uses audio clues at all, I need an in-world reason for them to exist. Otherwise everything stays written.
-- **How visible the vowel harmony should be.** The Hot/Cold flip is the core rule, but I still need to decide how much of the finer vowel detail a player should be expected to notice, versus how much exists just to keep the world consistent.
-- **Where "earned" stops and "told" starts.** The whole point of a discovery system is that the rules feel like the player figured them out. How much evidence to give before a rule becomes guessable is the big tuning problem ahead.
-- **Dialects.** I've noted, but not built, a split between surface-dwellers who lean Hot and deep-dwellers who lean Cold. That could be a really cool source of variation, and confusion, in the surviving records.
 
 ## Try it yourself: a starter word list
 
@@ -457,5 +442,4 @@ Now I should probably go make the actual game...
 
 - Kris Graft, [How inkle developed its own ancient language for Heaven's Vault](https://www.gamedeveloper.com/design/how-inkle-developed-its-own-ancient-language-for-i-heaven-s-vault-i-), Game Developer
 - [Chants of Sennaar](https://en.wikipedia.org/wiki/Chants_of_Sennaar), Wikipedia
-- [eSpeak NG](https://github.com/espeak-ng/espeak-ng), open-source speech synthesizer
 - Mark Rosenfelder, [The Language Construction Kit](https://www.zompist.com/kit.html)

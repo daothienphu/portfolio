@@ -23,6 +23,59 @@
   ],
   "projects": [
     {
+      "slug": "theia",
+      "title": "Theia",
+      "category": "Steam Game",
+      "workType": "Personal work",
+      "role": "Solo Developer",
+      "studio": "SpookyFish",
+      "startDate": "2026-05",
+      "endDate": "Present",
+      "summary": "An upcoming Steam game and my first commercial title: an incremental planet-defense game I'm building solo in Unity 6, developed using my own framework.",
+      "description": [
+        "Theia is my first commercial product and my entry into the incremental genre, built solo for Steam on Unity 6 (URP) and my own SpookyCore framework.",
+        "It is the first project where I've done every job myself: I built every system, from the architecture to gameplay and UI; designed the rules, progression, and numbers; and playtested each build, then rebalanced the game from the logged data."
+      ],
+      "tools": [
+        "Unity",
+        "Blender"
+      ],
+      "contributions": [
+        "**Built on [SpookyCore](spooky-core.html):** the game runs on my own Unity framework, which provides its foundation: an EventBus, a service locator, MVP UI, the Entity system (a custom MonoBehaviour lifecycle), a modifier-based Stat system, object pooling, and localization.",
+        "**Incremental progression:** in-run upgrade tracks for every satellite, a hexagonal meta upgrade tree with Core and Arsenal branches, currencies that carry over between runs, Star weapons unlocked by boss kills, and warping to later waves.",
+        "**Procedural content:** every run generates a new planet and a new backdrop in a light or dark color scheme, while adaptive music layers in stems that follow the fleet you build and the boss you face.",
+        "**Ship-ready features:** Steamworks integration, 33 achievements that sync both ways with Steam, seven languages with Google Sheets sync, full gamepad support, a first-run tutorial, and an in-game encyclopedia."
+      ],
+      "photos": [
+        {
+          "image": "assets/Proj/Theia/Screenshot1.png",
+          "alt": "Theia main menu with a procedurally generated planet and its satellites."
+        },
+        {
+          "image": "assets/Proj/Theia/Screenshot2.png",
+          "alt": "Theia gameplay: a fleet of satellites on orbital rings shooting down asteroids around a purple planet at wave 49."
+        },
+        {
+          "image": "assets/Proj/Theia/Screenshot3.png",
+          "alt": "The Core branch of Theia's hexagonal upgrade tree."
+        },
+        {
+          "image": "assets/Proj/Theia/Screenshot4.png",
+          "alt": "The Arsenal branch of Theia's upgrade tree, showing star weapons and their upgrades."
+        }
+      ],
+      "videos": [
+        {
+          "url": "assets/Proj/Theia/Video1.mp4",
+          "title": "Theia gameplay video 1"
+        },
+        {
+          "url": "assets/Proj/Theia/Video2.mp4",
+          "title": "Theia gameplay video 2"
+        }
+      ]
+    },
+    {
       "slug": "spookywater",
       "title": "SpookyWater",
       "category": "Water system",
@@ -241,7 +294,17 @@
         "Shaders & VFX",
         "Audio design"
       ]
+    },
+    {
+      "category": "AI-assisted development",
+      "items": [
+        "Claude Code",
+        "OpenAI Codex",
+        "Agentic coding workflows",
+        "Prompt & context design"
+      ]
     }
   ],
-  "commentsApi": "https://portfolio-comments.daothienphu1429.workers.dev"
+  "commentsApi": "https://portfolio-comments.daothienphu1429.workers.dev",
+  "youtube": "https://www.youtube.com/@SpookyTheFish"
 }
