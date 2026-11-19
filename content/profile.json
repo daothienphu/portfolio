@@ -195,7 +195,7 @@
       "role": "Game Developer Fresher",
       "company": "Amanotes",
       "description": [
-        "Developed core gameplay and music control systems for 4 minigames (**Magic Tiles 3**, **Beat Blader**, **Dancing Roads**, **Tiles Hop**, and **Beat Tiles**) using **TypeScript** in **Cocos2D** within the multi-mini-game music app **Game of Songs**",
+        "Developed and improved gameplay mechanics and music control systems for 4 minigames (**Magic Tiles 3**, **Beat Blader**, **Dancing Roads**, **Tiles Hop**, and **Beat Tiles**) using **TypeScript** in **Cocos2D** within the multi-mini-game music app **Game of Songs**",
         "Built patching and update scripts for modular mini-game deployment using Python.",
         "Contributed to an internal game SDK by implementing level generation, musical notation detection, and flow control in Objective-C and Swift.",
         "Collaborated with a team of 4 developers, 3 POs, and cross-functional internal teams."
