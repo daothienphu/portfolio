@@ -1,11 +1,11 @@
 {
   "name": "Thien-Phu Dao",
   "photo": "assets/me.jpg",
-  "publicHandle": "SpookyFish, Nemo Outis",
+  "publicHandle": "SpookyFish",
   "role": "Gameplay Developer",
   "intro": "Building worlds. Chasing that one-more-try feeling.",
   "bio": "I'm a gameplay developer based in **Ho Chi Minh City, Vietnam**. I have a solid technical foundation and hands-on experience in **system architecture**, **gameplay mechanics design**, and **custom editor tooling**.",
-  "about": "Welcome to this little space where I share pretty much everything about me.",
+  "about": "Welcome to this little space where I share pretty much anything and everything.",
   "github": "https://github.com/daothienphu",
   "linkedin": "https://www.linkedin.com/in/dao-thien-phu/",
   "x": "https://x.com/ImSpookyFish",
@@ -183,6 +183,7 @@
       "period": "Jul 2023 - Jul 2024",
       "role": "Junior Unity Engineer",
       "company": "Kong Studios",
+      "companyUrl": "https://kongstudios.com/us.html#explict",
       "description": [
         "Developed a mobile multiplayer real-time strategy game prototype (codename **Kong82**, development has been postponed) from the ground up in Unity, leveraging **Photon** and **Mirror** for multiplayer networking.",
         "Led the implementation of core gameplay systems, including structure management, unit control, and combat logic.",
@@ -194,8 +195,9 @@
       "period": "Nov 2021 - Dec 2022",
       "role": "Game Developer Fresher",
       "company": "Amanotes",
+      "companyUrl": "https://www.amanotes.com/",
       "description": [
-        "Developed and improved gameplay mechanics and music control systems for 4 minigames (**Magic Tiles 3**, **Beat Blader**, **Dancing Roads**, **Tiles Hop**, and **Beat Tiles**) using **TypeScript** in **Cocos2D** within the multi-mini-game music app **Game of Songs**",
+        "Developed and improved gameplay mechanics and music control systems for 4 minigames (**Magic Tiles 3**, **Beat Blader**, **Dancing Roads**, **Tiles Hop**, and **Beat Tiles**) using **TypeScript** in **Cocos2D** within the multi-mini-game music app **[Game of Songs](https://apps.apple.com/us/app/game-of-song-all-music-games/id1492267122)**",
         "Built patching and update scripts for modular mini-game deployment using Python.",
         "Contributed to an internal game SDK by implementing level generation, musical notation detection, and flow control in Objective-C and Swift.",
         "Collaborated with a team of 4 developers, 3 POs, and cross-functional internal teams."
@@ -224,8 +226,9 @@
       "period": "Nov 2022 - Dec 2022",
       "role": "Game Developer Collaborator",
       "company": "Garena",
+      "companyUrl": "https://www.garena.vn/",
       "description": [
-        "Collaborated with a 10-person dev team and internal departments on the multi-mini-game platform **Block Man Go**.",
+        "Collaborated with a 10-person dev team and internal departments on the multi-mini-game platform **[Block Man Go](https://www.blockmango.com/#/)**.",
         "Developed a simulation mini-game demo using Lua and a proprietary game engine similar to Roblox.",
         "Contributed during the probation period before team-wide layoffs."
       ],

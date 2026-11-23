@@ -39,7 +39,7 @@
     function resize() { w=innerWidth; h=innerHeight; const d=Math.min(devicePixelRatio||1,2); canvas.width=Math.round(w*d); canvas.height=Math.round(h*d); canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(d,0,0,d,0,0); measurePlatforms(); }
     function health() { cursorFill.style.width=Math.max(0,hp)+'%'; enemyBar.style.width=Math.max(0,fighter.hp)+'%'; cursorBar.style.left=Math.max(8,Math.min(w-112,pointer.x-50))+'px'; cursorBar.style.top=Math.max(65,pointer.y-47)+'px'; }
     function cleanup() { if (ending) return; ending=true; cancelAnimationFrame(raf); window.removeEventListener('resize',resize); window.removeEventListener('keydown',onKey); document.body.classList.remove('duel-active'); arena.remove(); active=false; }
-    function end(win) { if(over)return; over=true; if(!win){record.defeated++; save();} result.hidden=false; cursorBar.hidden=true; enemyHealth.hidden=true; result.innerHTML=win?'<strong>Congrats!</strong><span>You defeated me.</span><button type="button">Return to the site</button>':'<strong>Defeated!</strong><span>Ha! I got you!</span><button type="button">Return to the site</button>'; result.querySelector('button').addEventListener('click',cleanup); result.querySelector('button').focus(); }
+    function end(win) { if(over)return; over=true; if(!win){record.defeated++; save();} result.hidden=false; cursorBar.hidden=true; enemyHealth.hidden=true; result.innerHTML=win?'<strong>Congrats!</strong><span>You defeated me.</span><button type="button">Return</button>':'<strong>Defeated!</strong><span>Ha! I got you!</span><button type="button">Return</button>'; result.querySelector('button').addEventListener('click',cleanup); result.querySelector('button').focus(); }
     function onKey(e){ if(e.key==='Escape'){e.preventDefault();cleanup();} }
     function move(e){pointer.x=e.clientX;pointer.y=e.clientY;health();}
     function strike(e) { if(over||e.target.closest('.duel-hud, .duel-result'))return; e.preventDefault(); move(e); const now=performance.now(); if(now-lastStrike<160)return;lastStrike=now; effects.push({x:pointer.x,y:pointer.y,r:0,life:.32}); const dx=fighter.x-pointer.x,dy=fighter.y-pointer.y; if(Math.hypot(dx,dy)<90){ fighter.hp=Math.max(0,fighter.hp-10);fighter.hurt=.22;const dist=Math.max(1,Math.hypot(dx,dy));fighter.vx+=dx/dist*200;fighter.vy+=dy/dist*200; if(fighter.hp<=0)end(true); } health(); }
@@ -67,12 +67,15 @@
         fighter.hurt=Math.max(0,fighter.hurt-dt);damageCooldown=Math.max(0,damageCooldown-dt);fighter.attack=Math.max(0,fighter.attack-dt);fighter.next-=dt;fighter.jumpWait-=dt;
         if(Math.abs(dx)>8)fighter.facing=dx>0?1:-1;
         const targetV=Math.max(-245,Math.min(245,dx*2.1));fighter.vx+=(targetV-fighter.vx)*Math.min(1,dt*(fighter.grounded?9:3.8));
-        if(fighter.grounded && fighter.jumpWait<=0 && (dy < -35 || Math.abs(dx)>75 || Math.random()<.012)){
+        const onPlatform=fighter.grounded && fighter.y<h-50;
+        if(onPlatform && fighter.jumpWait<=0 && dy>70 && Math.abs(dx)<160){fighter.dropFrom=fighter.y+37;fighter.grounded=false;fighter.vy=60;fighter.jumpWait=.45;}
+        else if(fighter.grounded && fighter.jumpWait<=0 && (dy < -35 || Math.abs(dx)>75 || Math.random()<.012)){
           fighter.vy=-Math.min(670,Math.max(430,470+Math.max(0,-dy)*.55));fighter.grounded=false;fighter.jumpWait=.6;
         }
         if(fighter.next<=0 && dist<100){fighter.next=.55;fighter.attack=.32;}
         const prevFeet=fighter.y+37;fighter.vy=Math.min(850,fighter.vy+1350*dt);fighter.x=Math.max(18,Math.min(w-18,fighter.x+fighter.vx*dt));fighter.y+=fighter.vy*dt;fighter.grounded=false;
-        if(fighter.vy>=0){let landing=h-12;for(const surface of platforms){if(fighter.x+10>=surface.left && fighter.x-10<=surface.right && prevFeet<=surface.top+2 && fighter.y+37>=surface.top && surface.top<landing)landing=surface.top;}if(fighter.y+37>=landing && prevFeet<=landing+2){fighter.y=landing-37;fighter.vy=0;fighter.grounded=true;}}
+        if(fighter.dropFrom!==undefined && fighter.y+37>fighter.dropFrom+12)fighter.dropFrom=undefined;
+        if(fighter.vy>=0){let landing=h-12;for(const surface of platforms){if(fighter.dropFrom!==undefined && Math.abs(surface.top-fighter.dropFrom)<4)continue;if(fighter.x+10>=surface.left && fighter.x-10<=surface.right && prevFeet<=surface.top+2 && fighter.y+37>=surface.top && surface.top<landing)landing=surface.top;}if(fighter.y+37>=landing && prevFeet<=landing+2){fighter.y=landing-37;fighter.vy=0;fighter.grounded=true;}}
         if(fighter.y>h-49){fighter.y=h-49;fighter.vy=0;fighter.grounded=true;}
         if(dist<75 && fighter.attack<=.24 && fighter.attack>=.12 && damageCooldown<=0){hp=Math.max(0,hp-15);damageCooldown=.55;health();if(hp<=0)end(false);}
       }
